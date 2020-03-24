@@ -259,7 +259,11 @@ setInterval(
         }
 
         if (document.body.offsetWidth < 1188) {
-            var size = canvas.offsetWidth + "px";
+            var size = info.offsetWidth + "px";
+            document.getElementById('card-info').style.width = size;
+            document.getElementById('card-daerah').style.width = size;
+        } else {
+            var size = info.offsetWidth + "px";
             document.getElementById('card-info').style.width = size;
             document.getElementById('card-daerah').style.width = size;
         }
