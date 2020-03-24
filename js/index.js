@@ -376,7 +376,7 @@ fetch('https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/ArcGIS/rest/services/Statis
                 Persentase_Pasien_dalam_Perawatan = Persentase_Pasien_dalam_Perawatan / 1000;
                 var Persentase_Pasien_dalam_Perawatan_text = Persentase_Pasien_dalam_Perawatan.toString();
                 Persentase_Pasien_dalam_Perawatan_text = Persentase_Pasien_dalam_Perawatan_text.slice(0, 4);
-                document.getElementById('Jumlah_pasien_dalam_perawatan').innerHTML = Jumlah_pasien_dalam_perawatan + "  (" + Persentase_Pasien_dalam_Perawatan_text + " %)";
+                document.getElementById('Jumlah_pasien_dalam_perawatan').innerHTML = Jumlah_pasien_dalam_perawatan ";
 
                 // Tanggal pembahuruan
                 var time = data.Tanggal;
