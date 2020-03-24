@@ -356,7 +356,7 @@ fetch('https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/ArcGIS/rest/services/Statis
                 Persentase_Pasien_Meninggal = data.Persentase_Pasien_Meninggal;
                 Pesentase_Kasus_Baru_per_Hari = Jumlah_Kasus_Baru_per_Hari / Jumlah_Kasus_Kumulatif * 100;
                 var Pesentase_Kasus_Baru_per_Hari_text = Pesentase_Kasus_Baru_per_Hari.toString();
-                Pesentase_Kasus_Baru_per_Hari_text = Pesentase_Kasus_Baru_per_Hari_text.slice(0, 2);
+                Pesentase_Kasus_Baru_per_Hari_text = Pesentase_Kasus_Baru_per_Hari_text.slice(0, 4);
 
                 document.getElementById('Kasus_Terkonfirmasi_Akumulatif').innerHTML = Jumlah_Kasus_Kumulatif;
                 document.getElementById('Kasus_Sembuh_Akumulatif').innerHTML = Jumlah_Pasien_Sembuh;
@@ -365,7 +365,7 @@ fetch('https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/ArcGIS/rest/services/Statis
                 document.getElementById('Pesentase_Kasus_Baru_per_Hari').innerHTML = "(" + Jumlah_Kasus_Baru_per_Hari + " ) " + Pesentase_Kasus_Baru_per_Hari_text + " %";
                 Persentase_Pasien_dalam_Perawatan = Persentase_Pasien_dalam_Perawatan / 1000;
                 var Persentase_Pasien_dalam_Perawatan_text = Persentase_Pasien_dalam_Perawatan.toString();
-                Persentase_Pasien_dalam_Perawatan_text = Persentase_Pasien_dalam_Perawatan_text.slice(0, 2);
+                Persentase_Pasien_dalam_Perawatan_text = Persentase_Pasien_dalam_Perawatan_text.slice(0, 4);
                 document.getElementById('Jumlah_pasien_dalam_perawatan').innerHTML = Jumlah_pasien_dalam_perawatan + "  (" + Persentase_Pasien_dalam_Perawatan_text + " %)";
 
                 // Tanggal pembahuruan
