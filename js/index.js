@@ -256,8 +256,14 @@ setInterval(
             document.getElementById('tampilan').style.display = "none";
         } else {
             document.getElementById('tampilan').style.display = "block";
-
         }
+
+        if (document.body.offsetWidth < 1188) {
+            var size = canvas.offsetWidth + "px";
+            document.getElementById('card-info').style.width = size;
+            document.getElementById('card-daerah').style.width = size;
+        }
+        console.log(document.body.offsetWidth);
         if (document.body.offsetWidth != earlywidth) {
             var size = canvas.offsetWidth + "px";
             trackingMap.style.width = size;
