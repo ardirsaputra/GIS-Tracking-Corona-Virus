@@ -1,0 +1,56 @@
+[{
+        "provinsi": "Lampung",
+        "nama": "RSU Abdul Moeloek",
+        "kabupaten": "Bandar Lampung",
+        "alamat": "Jl. Dr. Rivai No. 6, Tj. Karang, Lampung 35112",
+        "telpon": [
+            "0721 703312"
+        ],
+        "geometry": {
+            "x": "105.2564722",
+            "y": "-5.4028103",
+            "z": "17"
+        }
+    },
+    {
+        "provinsi": "Lampung",
+        "kabupaten": "Lampung Selatan",
+        "nama": "RSUD dr.H. Bob Bazar. SKM (RSU Kalianda)",
+        "jalan": "Jl. Batin Tjindar Bumi No.14 B, Kedaton, Kec. Kalianda, Kabupaten Lampung Selatan, Lampung 35551",
+        "telpon": [
+            "(0727) 322159"
+        ],
+        "geometry": {
+            "x": "105.5964142",
+            "y": "-5.727482",
+            "z": "19"
+        }
+    },
+    {
+        "provinsi": "Lampung",
+        "kabupaten": "Lampung Utara",
+        "nama": "RSU Mayjend HM Ryacudu",
+        "jalan": "Jl. Jend. Sudirman No.24, Kota Gapura, Kotabumi, Kabupaten Lampung Utara, Lampung 34517",
+        "telpon": [
+            "(0724) 22095"
+        ],
+        "geometry": {
+            "x": "104.8913598",
+            "y": "-4.8331292",
+            "z": "18.07"
+        }
+    },
+    {
+        "provinsi": "Lampung",
+        "nama": "RSU Ahmad Yani",
+        "jalan": "Jl. Jend. Ahmad Yani No.13, Imopuro, Kec. Metro Pusat, Kota Metro, Lampung 34111",
+        "telpon": [
+            "(0725) 41820"
+        ],
+        "geometry": {
+            "x": "105.3101073",
+            "y": "-5.1159089",
+            "z": "19"
+        }
+    }
+]

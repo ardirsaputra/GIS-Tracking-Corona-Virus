@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Map Corona Lampung
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SIG Tracking for Covid19 in Indonesia">
+    <meta name="author" content="ardi ragil saputra">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js" integrity="sha256-DeADH3/xd9Uw6nXNFu01RuOyJ4Fw7whHhVlvFS4rzj4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <script src="js/leaflet-geometry-util.js"></script>
+    <script src="js/leaflet-arrow.js"></script>
+    <script src="js/leaflet-color-maker.js"></script>
+    <script src="data/lampung_positif.json"></script>
+    <script src="data/rumah_sakit_lampung.json"></script>
+    <style>
+        #trackingmap {
+            width: 1000px;
+            height: 500px;
+        }
+        
+        #heatmap {
+            width: 1000px;
+            height: 500px;
+        }
+        
+        #bnpbmap {
+            width: 1000px;
+            height: 500px;
+        }
+        
+        #benner {
+            background-image: repeating-linear-gradient( 135deg, yellow, black, yellow, black, yellow, black, yellow, black, yellow, black);
+            color: white;
+        }
+        
+        .my-custom-scrollbar {
+            position: relative;
+            height: 605px;
+            overflow: auto;
+        }
+        
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="conatiner">
+
+    <div class="m-2">
+        <h2 class="text-center mt-3 mb-1">Corona Virus Disease 2019</h2>
+        <hr>
+        <div id="tampilan" class="text-center btn btn-info text-white btn-block">Untuk Pengalaman Tampilan Lebih Baik Gunakan Layar Landscape 1370 x 720 pixel</div>
+    </div>
+    <div class="row m-2">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row mb-2">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="card">
+                        <div class="card-header text-center row bg-white border border-primary">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6  h4">
+
+
+                                Kasus
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6 ">
+
+
+                                <strong id="Kasus_Terkonfirmasi_Akumulatif"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="card">
+                        <div class="card-header text-center row bg-white border border-primary">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6  h4">
+
+
+                                Kenaikan
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6 ">
+
+
+                                <strong class="text-truncate" id="Pesentase_Kasus_Baru_per_Hari"></strong>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="card">
+                        <div class="card-header text-center row bg-white border border-primary">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6  h4">
+
+
+                                Perawatan
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6 ">
+
+
+                                <strong id="Jumlah_pasien_dalam_perawatan"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="card">
+                        <div class="card-header text-center row bg-white border border-primary">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6  h4">
+
+
+                                Sembuh
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6 ">
+
+
+                                <strong id="Kasus_Sembuh_Akumulatif"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="card">
+                        <div class="card-header text-center row bg-white border border-primary">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6  h4">
+
+
+                                Meninggal
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6 ">
+
+
+                                <strong id="Kasus_Meninggal_Akumulatif"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="card">
+                        <div class="card-header text-center row bg-white border border-primary">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6  h4">
+                                Update
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-6 ">
+
+                                <small><strong><div id="date" class="pb-1"></div></strong></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row mb-2">
+                <div class="col-12 col-xl-2 col-lg-12 col-md-12 col-sm-12">
+                    <div class="row mb-2">
+                        <div class="card shadow mt-2">
+                            <div class="card-header bg-light">
+                                <h4 class="ml-4 mr-4">
+                                    <center>Daerah</center>
+                                </h4>
+                            </div>
+                            <div id="daerah" class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-8 col-lg-12 col-md-12 col-sm-12">
+
+
+                    <div class="card shadow mt-2" id="canvas">
+                        <div class="btn-group mb-2 row pl-3 pr-3" role="group">
+                            <button class="btn col-12 col-xl-4 col-lg-4 col-md-12 col-sm-12" type="button" id="buttontrackingmap" onclick="switchMap('track')">Tracking Map Lampung</button>
+                            <div class=""></div>
+                            <button class="btn col-12 col-xl-4 col-lg-4 col-md-12 col-sm-12" type="button" id="buttonheatmap" onclick="switchMap('heat')">Heatmap Lampung</button>
+                            <div class=""></div>
+                            <button class="btn col-12 col-xl-4 col-lg-4 col-md-12 col-sm-12" type="button" id="buttonbnpb" onclick="switchMap('bnpb')">BNPB Nasional</button>
+                        </div>
+                        <div class="" id="heatmap"></div>
+                        <div class="" id="trackingmap"></div>
+                        <div class="" id="bnpbmap"></div>
+                        <div class="card-footer" id="note-map">
+                            <small> <strong>Catatan:</strong><br> 1. Titik lokasi yang ditunjukkan pada peta didasarkan pada centroid geografis dan mewakili kasus terkonfirmasi COVID-19 pada tingkat provinsi, serta tidak mewakili alamat tertentu, bangunan, atau lokasi apa pun. <br>2. Untuk provinsi dengan keterangan atribut Indonesia ditunjukkan kepada kasus terkonfirmasi yang sedang dilakukan proses verifikasi di lapangan.</small>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 col-xl-2 col-lg-12 col-md-12 col-sm-12">
+                    <div class="row mb-2">
+                        <div class="card shadow mt-2">
+                            <div class="card-header bg-light">
+                                <h4 class="ml-4 mr-4">
+                                    <center>Daftar Pasien</center>
+                                </h4>
+                            </div>
+
+                            <div id="info" class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 btn btn-info btn-block"><small class="text-white"><a class="text-white" href="https://experience.arcgis.com/experience/57237ebe9c5b4b1caa1b93e79c920338" target="_blank">Map Covid19 Indonesia</a> | <a class="text-white" href="https://www.covid19.go.id/" target="_blank"> Situs Resmi Pemerintah</a> | <a class="text-white" href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/" target="_blank">Map Global Cases Covid19 by CSSE</a> </small></div>
+
+    <script src="js/index.js"></script>
+    <hr>
+    <div class="text-center footer mt-2 mb-2 pb-2 pt-2">&copy; 2020 ARS , Versi Alpha <br><a href="contributor.html">Contributor</a><br><a href="reference.html">Reference</a></div>
+</body>
+
+</html>

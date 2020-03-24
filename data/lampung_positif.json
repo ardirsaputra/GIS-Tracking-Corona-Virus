@@ -1,0 +1,72 @@
+[{
+        "id": "1",
+        "nama": "Pasien 1",
+        "umur": "64",
+        "keadaan": "positif",
+        "alamat": "Tanjung Karang",
+        "keterangan": "",
+        "sumber": "https://regional.kompas.com/read/2020/03/21/13334041/rumah-pasien-positif-corona-01-lampung-disemprot-disinfektan",
+        "geometry": [{
+                "id": "1",
+                "x": "105.1980508",
+                "y": "-5.4028318",
+                "acuration": "false",
+                "note": "Posisi Kecamatan , Posisi Rumah (Tidak diketahui persisnya dimana)",
+                "tanggal": "2020-03-20"
+            },
+            {
+                "id": "2",
+                "x": "105.2459336",
+                "y": "-5.4106756",
+                "acuration": "true",
+                "note": "Ke Puskesmas karena cek kesehatan",
+                "tanggal": "2020-03-20"
+            },
+            {
+                "id": "3",
+                "x": "105.2599564",
+                "y": "-5.3920429",
+                "acuration": "true",
+                "note": "Rumah sakit advent Bandar lampung, perikasa kesehatan",
+                "tanggal": "2020-03-20"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "nama": "Pasien 2 Testing",
+        "umur": "6",
+        "keadaan": "sembuh",
+        "alamat": "Jakarta",
+        "keterangan": "Testing",
+        "sumber": "https://regional.kompas.com/read/2020/03/21/13334041/rumah-pasien-positif-corona-01-lampung-disemprot-disinfektan",
+        "geometry": [{
+                "id": "1",
+                "x": "106.6894312",
+                "y": "-6.229728",
+                "z": "11",
+                "acuration": "false",
+                "note": "Posisi Jakarta ",
+                "tanggal": "2020-03-21"
+            },
+            {
+                "id": "2",
+                "x": "105.2459336",
+                "y": "-5.4106756",
+                "z": "11",
+                "acuration": "true",
+                "note": "Lampung",
+                "tanggal": "2020-03-21"
+            },
+            {
+                "id": "3",
+                "x": "107.6080522",
+                "y": "-6.903363",
+                "z": "13",
+                "acuration": "true",
+                "note": "Bandung",
+                "tanggal": "2020-03-22"
+            }
+        ]
+    }
+]

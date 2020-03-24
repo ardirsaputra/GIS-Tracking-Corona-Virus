@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Map Corona Lampung
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SIG Tracking for Covid19 in Indonesia">
+    <meta name="author" content="ardi ragil saputra">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js" integrity="sha256-DeADH3/xd9Uw6nXNFu01RuOyJ4Fw7whHhVlvFS4rzj4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <script src="js/leaflet-geometry-util.js"></script>
+    <script src="js/leaflet-arrow.js"></script>
+    <script src="js/leaflet-color-maker.js"></script>
+</head>
+
+<body class="conatiner">
+
+    <div class="card text-center">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <div class=""><a href="index.html" class="pl-2"><i class="fas fa-arrow-left"></i></a></div>
+                <div class="h3 text-dark">Contributor</div>
+                <span class="" id=""></span>
+            </div>
+        </div>
+        <div class="card-body row">
+            <div class="col-12 col-xl-3 col-lg-4 col-md-12 col-sm-12">
+                <div class="card border-primary mb-3" style="">
+                    <div class="card-header">Kontributor 1</div>
+                    <div class="card-body text-primary">
+                        <h5 class="card-title"> Ardi Ragil Saputra</h5>
+                        <p class="card-text"> Kontributor sebagai Software Engineer <br> Teknik Informatika</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-3 col-lg-4 col-md-12 col-sm-12">
+                <div class="card border-primary mb-3" style="">
+                    <div class="card-header">Kontributor 2</div>
+                    <div class="card-body text-primary">
+                        <h5 class="card-title"> Riski Alandani</h5>
+                        <p class="card-text"> Kontributor sebagai Mentor <br> Teknik Elektro Unila</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            Next Day is Awesome
+        </div>
+    </div>
+    <hr>
+    <div class="text-center footer mt-2 mb-2 pb-2 pt-2">&copy; 2020 ARS , Versi Alpha <br><a href="contributor.html">Contributor</a></div>
+</body>
+
+</html>
